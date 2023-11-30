@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
 import Splash from '../Screen/Splash';
 import Onboarding from '../Screen/Onboarding';
+import Login from '../Screen/Login'
 
 
 const Stack = createStackNavigator();
@@ -17,6 +18,7 @@ const Index = () => {
         }}>
             <Stack.Screen name='Splash' component={Splash}/>
             <Stack.Screen name='Onboarding' component={Onboarding}/>
+            <Stack.Screen name ="Login" component={Login}/>
         </Stack.Navigator>
     </NavigationContainer>
   )

@@ -8,7 +8,11 @@ export default function App() {
   
   const [loaded] = useFonts({
     // Montserrat: require('./assets/fonts/Yatra-One.ttf'),
-      LibreBold : require("./assets/Fonts/Libre-Bold.ttf")
+      LibreBold : require("./assets/Fonts/Libre-Bold.ttf"),
+      Bold : require("./assets/Fonts/Montserrat-Bold.ttf"),
+      Light : require("./assets/Fonts/Montserrat-Light.ttf"),
+      Medium : require("./assets/Fonts/Montserrat-Medium.ttf"),
+      Black : require("./assets/Fonts/Montserrat-Black.ttf")
 
   });
   if (!loaded) {
