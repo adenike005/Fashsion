@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { View, Text, SafeAreaView, FlatList, Image, PixelRatio, TouchableOpacity } from 'react-native';
 import Images from '../Navigation/Images';
-import Color from '../Navigation/Color,';
+import Color from '../Navigation/Color';
 import { Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('window');

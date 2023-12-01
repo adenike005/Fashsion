@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Index from './Navigation/Index';
 import { useFonts } from 'expo-font';
+import Color from './Navigation/Color';
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
   }
   return (
    <>
+   <StatusBar backgroundColor={Color.White} />
    <Index/>
    </>
   );
