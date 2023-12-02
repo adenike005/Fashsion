@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Homee = () => {
+const Firstpage = () => {
   return (
     <View>
-      <Text>Home</Text>
+      <Text>Firstpage</Text>
     </View>
   )
 }
 
-export default Homee
+export default Firstpage

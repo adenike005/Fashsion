@@ -1,34 +1,129 @@
-import { StyleSheet, Text, View, useColorScheme } from 'react-native'
+import { StyleSheet, Text, View, useColorScheme,TouchableOpacity  } from 'react-native'
 import React from 'react'
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native'
+import { NavigationContainer, DefaultTheme, DarkTheme, useNavigation, DrawerActions } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
 import Splash from '../Screen/Splash';
 import Onboarding from '../Screen/Onboarding';
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Login from '../Screen/Login'
+import Home from '../Screen/Home'
+import Forget from '../Screen/Forget';
+import Signs from '../Screen/Signs';
+import DrawerNavigation from '../Navigation/Drawer'
+import Settings from '../Screen/Settings';
+import Icon from 'react-native-vector-icons/Entypo';
 
-const Stack = createStackNavigator();
+// Define Drawer Navigator separately
+const StacNav = () => {
+  const Stack = createStackNavigator();
+  const navigation = useNavigation();
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
 
+        // You can customize other options here
+      }}
+    >
+      <Stack.Screen name="Splash" component={Splash} />
+      <Stack.Screen name="Onboarding" component={Onboarding} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen
+  name="Homes"
+  component={Home}
+  options={{
+    headerShown: true,
+    headerTitle: "",
+    headerLeft: () => (
+      <TouchableOpacity>
+        <Icon
+          name="menu"
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+          size={20}
+          color="#000"
+          style={{ marginLeft: 20 }}
+        />
+      </TouchableOpacity>
+    ),
+    headerRight: () => (
+      <View style={{ flexDirection: "row" }}>
+        <TouchableOpacity
+          onPress={() => {
+            // Handle left button press
+          }}
+        >
+          <View
+            style={{
+              marginRight: 10,
+              backgroundColor: "#f83758",
+              borderRadius: 8,
+              paddingVertical: 5,
+              paddingHorizontal: 10,
+            }}
+          >
+            <Text style={{ color: "white" }}>Button 1</Text>
+          </View>
+        </TouchableOpacity>
 
+        <TouchableOpacity
+          onPress={() => {
+            // Handle middle button press
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "#f83758",
+              borderRadius: 8,
+              paddingVertical: 5,
+              paddingHorizontal: 10,
+            }}
+          >
+            <Text style={{ color: "white" }}>Button 2</Text>
+          </View>
+        </TouchableOpacity>
 
-const Index = () => {
-  const scheme = useColorScheme();
-  console.log(scheme)
+        
+      </View>
+    ),
+  }}
+/>
+
+      <Stack.Screen name="Forget" component={Forget} />
+      <Stack.Screen name="Signs" component={Signs} />
+    </Stack.Navigator>
+  );
+};
+
+function Index() {
+  const Drawer = createDrawerNavigator();
 
   return (
-    <NavigationContainer >
-      <Stack.Navigator
+    <NavigationContainer>
+      <Drawer.Navigator
         screenOptions={{
           headerShown: false,
-        }}>
-        <Stack.Screen name='Splash' component={Splash}/>
-        <Stack.Screen name='Onboarding' component={Onboarding}/>
-        <Stack.Screen name="Login" component={Login}/>
-      </Stack.Navigator>
+          headerStyle: {
+            backgroundColor: 'transparent', // Set the background color to transparent
+          },
+        
+        }}
+      >
+        <Drawer.Screen
+          name='Home'
+          component={StacNav}
+        />
+        <Drawer.Screen
+          name='Settings'
+          component={Settings}
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
-  )
+  );
 }
 
 export default Index;
+
+
 
 
