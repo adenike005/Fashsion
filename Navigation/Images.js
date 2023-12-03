@@ -8,6 +8,9 @@ const Images = {
     Google : require("../assets/Images/google.png"),
     apple : require("../assets/Images/apple.png"),
     facebook : require("../assets/Images/facebook.png"),
+    person : require("../assets/Images/person.png"),
+    F1 : require("../assets/Images/f1.jpg"),
+    Background : require("../assets/Images/background.png")
 
 }
 
