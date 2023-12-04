@@ -33,7 +33,7 @@ const StacNav = () => {
       {/* <Stack.Screen name="Login" component={Login} /> */}
       
       <Stack.Screen
-        name="Root"
+        name="Roots"
         component={Tabs}
         options={{
           headerShown: false,

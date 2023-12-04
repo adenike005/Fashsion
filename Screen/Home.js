@@ -1,84 +1,11 @@
-// import { View, Text, PixelRatio, Image, TouchableOpacity } from "react-native";
-// import React, {useState, useEffect} from "react";
-// import Color from "../Navigation/Color";
-// import Images from "../Navigation/Images";
-// import { Ionicons, Feather } from "react-native-vector-icons";
-
-// const fontScale = PixelRatio.getFontScale();
-// const getFontSize = (size) => size / fontScale;
-
-// const Home = ({ navigation, route }) => {
-//   // const image = route.params?.image;
-//   const [image, setImage] = useState(null);
-//   useEffect(() => {
-//     if (route.params?.image) {
-//       setImage(route.params.image);
-//     }
-//   }, [route.params?.image]);
-//   return (
-//     <View style={{ flex: 1 }}>
-//       <View style={{ paddingHorizontal: 25, marginTop: "10%" }}>
-//         <View
-//           style={{
-//             display: "flex",
-//             flexDirection: "row",
-//             justifyContent: "space-between",
-//             alignItems: "center",
-//           }}
-//         >
-//           <Feather size={22} name="menu" Color={Color.Black} />
-//           <View
-//             style={{
-//               display: "flex",
-//               flexDirection: "row",
-//               alignItems: "center",
-//             }}
-//           >
-//             <Image
-//               source={Images.Logo}
-//               style={{ width: 30, height: 30 }}
-//               resizeMode="contain"
-//             />
-//             <Text
-//               style={{
-//                 color: "#4392F9",
-//                 fontSize: getFontSize(17),
-//                 marginLeft: "5%",
-//               }}
-//             >
-//               Stylish
-//             </Text>
-//           </View>
-//           <TouchableOpacity
-//         onPress={() => navigation.navigate('Settings', { image })}>
-//        <Image source={image ? { uri: image } : Images.F1} style={{width:30, height:30, borderRadius:15}} resizeMode='contain'/>
-//        </TouchableOpacity>
-
-//           {/* <Image
-//             style={{
-//               width: "100%",
-//               height: "100%",
-//               // borderRadius: 60,
-//             }}
-//             source={image ? { uri: image } : Images.F1}
-//             resizeMode="contain"
-//             onPress={() => navigation.navigate('Settings')}
-//           /> */}
-//         </View>
-//       </View>
-//     </View>
-//   );
-// };
-
-// export default Home;
-
-
-import { View, Text, PixelRatio, Image, TouchableOpacity } from "react-native";
+import { View, Text, PixelRatio, Image, TouchableOpacity, TextInput } from "react-native";
 import React, { useState } from "react";
 import Color from "../Navigation/Color";
 import Images from "../Navigation/Images";
-import { Ionicons, Feather } from "react-native-vector-icons";
-
+import { Ionicons, Feather, MaterialCommunityIcons } from "react-native-vector-icons";
+import { ScrollView } from "react-native-gesture-handler";
+import Flat from "../Screen/Flat"
+import Category from "../Navigation/Category";
 const fontScale = PixelRatio.getFontScale();
 const getFontSize = (size) => size / fontScale;
 
@@ -90,8 +17,10 @@ const Root = ({ navigation, route }) => {
     setImage(newImage);
   };
 
+
+
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1 }}>
       <View style={{ paddingHorizontal: 25, marginTop: "10%" }}>
         <View
           style={{
@@ -134,8 +63,67 @@ const Root = ({ navigation, route }) => {
             />
           </TouchableOpacity>
         </View>
-      </View>
+        <View 
+        style={{width:"100%", height:40,  
+        backgroundColor:Color.White, elevation: 5, 
+        marginTop:"5%",
+        display:"flex", flexDirection:"row", 
+        justifyContent:"space-between", 
+        alignItems:"center", paddingHorizontal:"5%" }}>
+         <View style={{ display:"flex", flexDirection:"row", 
+        justifyContent:"space-between", 
+        alignItems:"center", }}>
+        <TouchableOpacity> 
+          <Ionicons
+         name='search'
+         size={18}
+         color={Color.Gray}
+         style={{marginRight:"2%"}}/></TouchableOpacity>
+         <TextInput
+         placeholder="Search any Product.."
+         placeholderTextColor={Color.Gray}/>
+         </View>
+         <View>
+         <TouchableOpacity>
+         <Ionicons
+          name='mic'
+          size={20}
+          color={Color.Gray}/>
+         </TouchableOpacity>
+         </View>
+        </View>
+        <View style={{display:"flex", flexDirection:"row", justifyContent:"space-between", alignItems:"center",marginTop:"5%", marginBottom:"5%"}}>
+       <View>
+        <Text>All Featured</Text>
+       </View>
+       <View style={{display:"flex", flexDirection:"row", alignItems:"center",justifyContent:"space-between"}}>
+        <TouchableOpacity style={{width: 70, height:25, display:"flex", flexDirection:"row", elevation:5, backgroundColor:Color.White,alignItems:"center", paddingHorizontal:"5%",borderRadius:5 }}>
+          <Text style={{marginRight:"10%"}}>Sort</Text>
+          <MaterialCommunityIcons
+          name='sort-ascending'/>
+        </TouchableOpacity>
+        <TouchableOpacity style={{width: 70, height:25, display:"flex", flexDirection:"row", elevation:5, backgroundColor:Color.White,alignItems:"center", paddingHorizontal:"5%", borderRadius:5, marginRight:"5%" }}>
+          <Text style={{marginRight:"10%"}}>Filter</Text>
+          <MaterialCommunityIcons
+          name='filter-outline'/>
+        </TouchableOpacity>
+       </View>
+        </View>
+        
+
+       <View>
+        <Flat/>
+       </View>
+
+       <View>
+       <View>
+        <Category/>
+       </View>
+      
     </View>
+        
+      </View>
+    </ScrollView>
   );
 };
 

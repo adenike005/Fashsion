@@ -6,7 +6,8 @@ import Home from "../Screen/Home";
 import Settings from "../Screen/Settings";
 import Color from "./Color";
 import Love from "../Screen/Love";
-import Cart from "../Screen/Cart"
+import Cart from "../Screen/Cart";
+import Search from "../Screen/Search";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,17 +28,19 @@ const TabNavigator = () => {
             iconName = focused ? "heart-outline" : "heart-outline";
           } else if (route.name === "Cart") {
             iconName = focused ? "cart" : "cart-outline";
+          }else if (route.name === "Search") {
+            iconName = focused ? "search-outline" : "search-outline";
           }
 
           return <Ionicons name={iconName} size={iconSize} color={color} />;
         },
       })}
       tabBarOptions={{
-        activeTintColor: Color.White,
-        inactiveTintColor: Color.Red,
+        activeTintColor: Color.Black,
+        // inactiveTintColor: Color.Red,
         showLabel: false,
         tabStyle: {
-          backgroundColor: "rgba(0, 0, 0, 0.8)",
+        //   backgroundColor: "rgba(0, 0, 0, 0.8)",
         },
         style: {
           borderTopColor: "transparent",
@@ -48,7 +51,7 @@ const TabNavigator = () => {
         name="Home"
         component={Home}
         options={{
-          headerShown: false, // Hide the header for the 'Cart' screen
+          headerShown: false, 
         }}
       />
 
@@ -56,7 +59,7 @@ const TabNavigator = () => {
         name="Love"
         component={Love}
         options={{
-          headerShown: false, // Hide the header for the 'Cart' screen
+          headerShown: false,
         }}
       />
 
@@ -64,7 +67,16 @@ const TabNavigator = () => {
         name="Cart"
         component={Cart}
         options={{
-          headerShown: false, // Hide the header for the 'Cart' screen
+          headerShown: false,
+          
+        }}
+      />
+
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{
+          headerShown: false,
         }}
       />
 
@@ -72,7 +84,7 @@ const TabNavigator = () => {
         name="Settings"
         component={Settings}
         options={{
-          headerShown: false, // Hide the header for the 'Cart' screen
+          headerShown: false, 
         }}
       />
     </Tab.Navigator>

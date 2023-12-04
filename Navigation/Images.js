@@ -10,7 +10,12 @@ const Images = {
     facebook : require("../assets/Images/facebook.png"),
     person : require("../assets/Images/person.png"),
     F1 : require("../assets/Images/f1.jpg"),
-    Background : require("../assets/Images/background.png")
+    Background : require("../assets/Images/background.png"),
+    Beautiful : require("../assets/Images/beautiful.jpg"),
+    girl : require("../assets/Images/girl.jpg"),
+    Woman : require("../assets/Images/woman.jpg"),
+    close : require("../assets/Images/close.jpg"),
+    male : require("../assets/Images/male.jpg"),
 
 }
 
