@@ -6,6 +6,8 @@ import { Ionicons, Feather, MaterialCommunityIcons } from "react-native-vector-i
 import { ScrollView } from "react-native-gesture-handler";
 import Flat from "../Screen/Flat"
 import Category from "../Navigation/Category";
+
+//
 const fontScale = PixelRatio.getFontScale();
 const getFontSize = (size) => size / fontScale;
 

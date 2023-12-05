@@ -16,6 +16,7 @@ const Images = {
     Woman : require("../assets/Images/woman.jpg"),
     close : require("../assets/Images/close.jpg"),
     male : require("../assets/Images/male.jpg"),
+    Group : require("../assets/Images/Groups.png"),
 
 }
 

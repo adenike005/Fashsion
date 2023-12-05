@@ -1,81 +1,69 @@
-import React, { useState, useEffect, useRef } from "react";
-import { StyleSheet, SafeAreaView, ScrollView, ImageBackground, Dimensions } from "react-native";
+
+
+
+import React from 'react';
+import { View, Image, StyleSheet, PixelRatio, ImageBackground, Text } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
 import Images from "./Images";
+const fontScale = PixelRatio.getFontScale();
+const getFontSize = (size) => size / fontScale;
 
-const Imagess = [
-  Images.Background,
-  Images.Background,
-  Images.Background,
-];
+const MyCarousel = () => {
+  const data = [
+    { id: '1',  image: Images.Group },
+    { id: '1', text: '50% - 40% OFF', image: Images.girl },
+    { id: '1', text: 'Item 1', image: Images.Woman },
+    { id: '1', text: 'Item 1', image: Images.Beautiful },
+    // Add more items as needed
+  ];
 
-const WIDTH = Dimensions.get("window").width;
-const HEIGHT = Dimensions.get("window").height;
-
-const Category = () => {
-  const scrollViewRef = useRef(null);
-  const [imageActive, setImageActive] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Calculate the next index
-      const nextIndex = (imageActive + 1) % Imagess.length;
-      
-      // Scroll to the next index
-      scrollViewRef.current?.scrollTo({ x: nextIndex * WIDTH, animated: true });
-
-      // Update the active image index
-      setImageActive(nextIndex);
-    }, 3000); // Adjust the interval (in milliseconds) as needed
-
-    return () => clearInterval(interval); // Cleanup on component unmount
-  }, [imageActive]);
-
-  const onChange = (event) => {
-    const slideWidth = WIDTH;
-    const contentOffset = event.nativeEvent.contentOffset.x;
-    const activeImage = Math.floor(contentOffset / slideWidth);
-    setImageActive(activeImage);
-  };
+  const renderItem = ({ item }) => (
+  <>
+   <View style={{  width: '100%', height: getFontSize(150) }}>
+        <Image
+          source={item.image}
+          style={{ width: '100%', height: '100%', resizeMode: 'cover',  borderRadius: 20, }}
+        />
+      </View>
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+      <View style={{paddingVertical:"10%", paddingHorizontal:"5%"}}><Text style={{ color: 'white', fontSize: getFontSize(16), fontWeight: 'bold' }}>{item.text}</Text></View>
+    </View>
+  </>
+     
+  
+    
+  );
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView
-        ref={scrollViewRef}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        onScroll={onChange}
-        style={styles.wrap}
-      >
-        {Imagess.map((image, index) => (
-          <ImageBackground
-            key={index}
-            resizeMode="cover"
-            style={styles.image}
-            source={image}
-            imageStyle={{ borderRadius: 30 }}
-          />
-        ))}
-      </ScrollView>
-    </SafeAreaView>
+    <Carousel
+      data={data}
+      renderItem={renderItem}
+      sliderWidth={300}
+      itemWidth={300}
+      layout="default"
+      loop
+    />
   );
 };
 
-export default Category;
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  carouselItem: {
+    // borderRadius: 10,
+    // overflow: "hidden",
+    // width:"100%",
+    // height:"30%"
+    flex:1,
   },
-  wrap: {
-    width: WIDTH,
-    height: HEIGHT * 0.25,
-  },
-  image: {
-    width: WIDTH,
-    height: HEIGHT * 0.25,
-  },
+  // image: {
+  //   width: "100%",
+  //   height: "100%",
+  //   resizeMode:"contain",
+  // },
 });
+
+export default MyCarousel;
+
+
 
 
 
