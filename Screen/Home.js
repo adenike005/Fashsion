@@ -2,10 +2,11 @@ import { View, Text, PixelRatio, Image, TouchableOpacity, TextInput } from "reac
 import React, { useState } from "react";
 import Color from "../Navigation/Color";
 import Images from "../Navigation/Images";
-import { Ionicons, Feather, MaterialCommunityIcons } from "react-native-vector-icons";
+import { Ionicons, Feather, MaterialCommunityIcons, EvilIcons } from "react-native-vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
 import Flat from "../Screen/Flat"
 import Category from "../Navigation/Category";
+import Flats from '../Navigation/Flats'
 
 //
 const fontScale = PixelRatio.getFontScale();
@@ -113,13 +114,30 @@ const Root = ({ navigation, route }) => {
         </View>
         
 
-       <View>
+       <View style={{marginBottom:"7%"}}>
         <Flat/>
        </View>
 
        <View>
        <View>
         <Category/>
+       </View>
+
+       <View style={{marginTop:"5%", backgroundColor:"#4392F9", width:"100%", height:70, borderRadius:10, padding:"5%", display:"flex", flexDirection:"row", justifyContent:"space-between",alignItems:"center"}}>
+       <View>
+       <Text style={{color:Color.White}}>Deal of the day</Text>
+      <View style={{display:"flex", flexDirection:"row", alignItems:"center", marginTop:"3%"}}>
+      <EvilIcons name='clock' size={18} color={Color.White}/>
+       <Text style={{color:Color.White, fontFamily:"Light", fontSize:getFontSize(10)}}>22h 55m 20s remaining</Text>
+      </View>
+       </View>
+       <View style={{width:90,borderWidth:1,borderColor:Color.White , padding: 5, borderRadius:5}}>
+        <Text style={{color:Color.White, textAlign:"center"}}>View All --{'>'}</Text>
+       </View>
+       </View>
+
+       <View>
+        <Flats/>
        </View>
       
     </View>

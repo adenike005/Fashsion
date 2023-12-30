@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/Entypo';
 import Images from './Images';
 import Started from '../Screen/Started';
 import Tabs from './Tabs';
+import Flats from '../Navigation/Flats'
 // Define Drawer Navigator separately
 const StacNav = () => {
   
@@ -93,6 +94,7 @@ const StacNav = () => {
       {/* <Stack.Screen name="Forget" component={Forget} />
       <Stack.Screen name="Signs" component={Signs} />
       <Stack.Screen name='Settings' component={Settings}/> */}
+      {/* <Stack.Screen name='Flats' component={Flats}/> */}
     </Stack.Navigator>
   );
 };

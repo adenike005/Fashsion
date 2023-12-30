@@ -11,17 +11,17 @@ const MyFlatList = () => {
   // Sample data for the FlatList
   const data = [
     { id: '1', title: 'Beauty', image : Images.close },
-    { id: '1', title: 'Kids', image : Images.girl },
-    { id: '1', title: 'Fashion', image : Images.Woman },
-    { id: '1', title: 'Mens', image : Images.male },
-    { id: '1', title: 'Womens', image : Images.Beautiful },
+    { id: '2', title: 'Kids', image : Images.girl },
+    { id: '3', title: 'Fashion', image : Images.Woman },
+    { id: '4', title: 'Mens', image : Images.male },
+    { id: '5', title: 'Womens', image : Images.Beautiful },
   
     // Add more items as needed
   ];
 
   // Render each item in the FlatList
   const renderItem = ({ item }) => (
-    <View style={{marginHorizontal:10 }}>
+    <View style={{marginRight:getFontSize(24) }}>
       <TouchableOpacity style={{width:40, height:40, borderRadius:20,overflow: 'hidden'}}>
       <Image source={item.image} style={{width:"100%", height:"100%", borderRadius:50}} resizeMode='contain'/>
       </TouchableOpacity>
