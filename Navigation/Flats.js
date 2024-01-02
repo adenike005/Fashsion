@@ -216,59 +216,58 @@
 
 
 
-
 import React from 'react';
-import { View, FlatList, Text, StyleSheet, Image } from 'react-native';
-import Images from './Images';
+import { View, FlatList, Text, StyleSheet, Dimensions } from 'react-native';
 
-const HorizontalFlatList = () => {
+const HorizontalTwoColumnFlatList = () => {
   const data = [
-    { id: '2', title: 'Kids', image : Images.girl , text:"HRX by Hrithik Roshan"},
-    { id: '3', title: 'Fashion', image : Images.Woman , text:"HRX by Hrithik Roshan"},
-    { id: '4', title: 'Mens', image : Images.male , text:"HRX by Hrithik Roshan"},
-    { id: '5', title: 'Womens', image : Images.Beautiful, text:"HRX by Hrithik Roshan" },
+    { id: '1', text: 'Item 1' },
+    { id: '2', text: 'Item 2' },
+    { id: '3', text: 'Item 3' },
+    { id: '4', text: 'Item 4' },
     // Add more items as needed
   ];
 
-  const renderItem = ({ item }) => {
-    return (
-      <View style={styles.item}>
-       <View style={{width:"100%", height:"80%"}}>
-       <Image source={item.image} style={{width:"100%", height:"100%"}}/>
-       <Text>{item.title}</Text>
-       <Text>{item.text}</Text>
-       </View>
-      
-      </View>
-    );
-  };
+  const renderItem = ({ item }) => (
+    <View style={styles.item}>
+      <Text style={styles.text}>{item.text}</Text>
+    </View>
+  );
 
   return (
     <FlatList
       data={data}
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
-      horizontal={true} // Set to true for horizontal FlatList
-      showsHorizontalScrollIndicator={false}
+      horizontal={true}
+      contentContainerStyle={styles.contentContainer}
     />
   );
 };
 
+const { width } = Dimensions.get('window');
+const itemWidth = width / 2 - 20;
+
 const styles = StyleSheet.create({
   item: {
-    width: 130, // Adjust the width as needed
-    height: 130, // Adjust the height as needed
-    margin: 10,
     backgroundColor: '#3498db',
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 5,
     borderRadius: 8,
+    width: itemWidth,
   },
   text: {
     color: '#fff',
     fontSize: 16,
   },
+  contentContainer: {
+    flexDirection: 'row',
+  },
 });
 
-export default HorizontalFlatList;
+export default HorizontalTwoColumnFlatList;
+
+
+
 

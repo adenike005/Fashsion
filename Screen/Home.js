@@ -60,7 +60,7 @@ const Root = ({ navigation, route }) => {
           style={{ width: 40, height: 40, borderRadius: 20 , borderWidth:2, borderColor:Color.White}}
           onPress={() => navigation.navigate('Settings', { updateImage })}>
             <Image
-              source={image ? { uri: image } : Images.F1}
+              source={image ? { uri: image } : Images.avater}
               style={{ width: "100%", height: "100%", borderRadius: 25 }}
               resizeMode='contain'
             />

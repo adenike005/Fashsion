@@ -17,6 +17,7 @@ const Images = {
     close : require("../assets/Images/close.jpg"),
     male : require("../assets/Images/male.jpg"),
     Group : require("../assets/Images/Groups.png"),
+    avater : require("../assets/Images/avater.png")
 
 }
 

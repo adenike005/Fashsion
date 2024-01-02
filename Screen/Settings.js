@@ -88,7 +88,7 @@ const Settings = ({ navigation, route }) => {
                   height: "100%",
                   borderRadius: 60,
                 }}
-                source={image ? { uri: image } : Images.F1}
+                source={image ? { uri: image } : Images.avater}
                 resizeMode="contain"
               />
             </View>
